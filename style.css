@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.form_container {
+  display: grid;
+  place-items: center;
+}
+
+.form_container > form {
+  display: flex;
+  flex-direction: column;
+  padding-block: 16px;
+}

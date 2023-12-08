@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Sheet - Data Storage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--Form Data-->
+    <div class="form_container">
+      <form
+        action="https://sheetdb.io/api/v1/x7vsg6ij2cb6n"
+        method="post"
+        id="sheetdb-form"
+      >
+        <h1>Grocery Details</h1>
+        <label for="product"> Product </label>
+        <input type="text" name="product" placeholder="Enter Product Name" />
+        <label for="price"> Price </label>
+        <input
+          type="text"
+          inputmode="numeric"
+          name="price"
+          placeholder="Enter Product Name"
+        />
+        <label for="date"> Date </label>
+        <input type="date" name="date" placeholder="Enter Product Name" />
+        <button>Buy now</button>
+      </form>
+
+      <h1 id="show"></h1>
+    </div>
+
+    <!----JAVA SCRIPT-->
+    <script>
+      var form = document.getElementById("sheetdb-form");
+      var show = document.getElementById("show");
+      var text = "Thanks for ordering product with US!";
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(document.getElementById("sheetdb-form")),
+        })
+          .then((response) => {
+            response.json({
+              message: "successfully data's are stored in google sheet",
+            });
+            confirm("Are You Happy Kamalakshi?");
+            show.textContent = text;
+          })
+          .catch((err) => {
+            console.log({ Error: "Invalid Link OR Something went to wrong" });
+          });
+      });
+    </script>
+  </body>
+</html>
